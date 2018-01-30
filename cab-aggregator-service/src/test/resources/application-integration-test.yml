@@ -1,0 +1,40 @@
+server:
+  port: 9999
+  ssl:
+    enabled: false
+
+flyway:
+  enabled: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+
+security:
+  basic:
+    enabled: false
+
+spring:
+  application:
+    name: cab-service
+  admin:
+        enabled: false
+  datasource:
+        url: jdbc:h2:file:~/h2/integration_test_db;DB_CLOSE_ON_EXIT=FALSE
+        username: sa
+        password:
+        driverClassName: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        ddl-auto: update
+
+eureka:
+  client:
+    enabled: false
+
+cab-service:
+  url: http://localhost:9999

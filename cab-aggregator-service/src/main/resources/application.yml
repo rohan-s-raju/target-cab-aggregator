@@ -1,0 +1,48 @@
+## SSL CONFIGURATIONS
+server:
+  port: 8090
+  display-name: cab-service
+  connection-timeout: 10000
+  compression.enabled: true
+
+
+
+
+
+spring:
+  application:
+    name: cab-service
+  datasource:
+        url: jdbc:mysql://localhost:3306/target
+        username: root
+        password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+
+management:
+  security:
+    enabled: false
+
+eureka:
+   instance:
+    leaseRenewalIntervalInSeconds: 1
+   client:
+    registerWithEureka: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 1
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:9010}/eureka/
+
+logging:
+  config: classpath:logback-spring.xml
+  levels:
+    org.springframework: INFO
+    com.aprameya: INFO
+  appenders:
+    name: console # , rollingfile
+    rollingfile:
+      directory: logs/cab-service
+      prefix: cab-service
